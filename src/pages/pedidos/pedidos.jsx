@@ -40,7 +40,7 @@ export const Pedidos = () => {
   const add = (formik) => {
     NiceModal.show(Modal).then(resp => {
       formik.setFieldValue('productosPedido', 
-        [...formik.values.productosPedido, {codPro: resp.producto, cantidad: resp.cantidad}]
+        [...formik.values.productosPedido, {producto: resp.producto, cantidad: resp.cantidad}]
       )
     });
   }
@@ -104,7 +104,14 @@ export const Pedidos = () => {
                         </th>
                       </tr>
                     </thead>
-                    <tbody></tbody>
+                    <tbody>
+                      {formik.values.productosPedido.map(item => (
+                        <tr key={item.value}>
+                          <td>{item.producto.label}</td>
+                          <td>{item.cantidad}</td>
+                        </tr>
+                      ))}
+                    </tbody>
                   </table>
                 </div>
                 <div className="flex justify-end gap-2">
