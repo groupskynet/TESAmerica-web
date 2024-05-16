@@ -37,7 +37,7 @@ export const Comisiones = () => {
             >
               <div>
                 <label
-                  for="start_date"
+                  htmlFor="start_date"
                   class="block mb-2 text-sm font-medium text-gray-900"
                 >
                   Fecha inicial
@@ -55,7 +55,7 @@ export const Comisiones = () => {
               </div>
               <div>
                 <label
-                  for="end_date"
+                  htmlFor="end_date"
                   class="block mb-2 text-sm font-medium text-gray-900"
                 >
                   Fecha final

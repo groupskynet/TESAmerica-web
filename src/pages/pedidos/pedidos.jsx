@@ -4,6 +4,8 @@ import Select from "react-select";
 import { service } from "./services/pedidos";
 import { useState } from "react";
 import { InitialValues, Schema } from "./Schema";
+import NiceModal from "@ebay/nice-modal-react";
+import Modal from './components/modal';
 
 export const Pedidos = () => {
   const [products, setProducts] = useState([]);
@@ -82,7 +84,12 @@ export const Pedidos = () => {
                     ></Select>
                   </div>
                 </div>
-                <div className="border-t border-dashed pt-2">
+                <form
+                  className="border-t border-dashed pt-2"
+                  onSubmit={() => {
+                    console.log("event");
+                  }}
+                >
                   <div className="grid grid-cols-3 gap-1 items-center">
                     <div>
                       <label className="block mb-2 text-sm font-medium">
@@ -92,8 +99,8 @@ export const Pedidos = () => {
                     </div>
                     <div>
                       <label
-                        for="end_date"
-                        class="block mb-2 text-sm font-medium text-gray-900"
+                        htmlFor="end_date"
+                        className="block mb-2 text-sm font-medium text-gray-900"
                       >
                         Cantidad
                       </label>
@@ -102,7 +109,7 @@ export const Pedidos = () => {
                         id="end_date"
                         name="end_date"
                         onChange={formik.handleChange}
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2"
+                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2"
                         placeholder="cantidad"
                         required
                       />
@@ -112,22 +119,23 @@ export const Pedidos = () => {
                     <button
                       type="button"
                       className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2"
+                      onClick={() => NiceModal.show(Modal, {})}
                     >
                       Agregar
                     </button>
                   </div>
-                </div>
-                <div class="relative overflow-x-auto rounded-lg flex-grow">
-                  <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                    <thead class="text-xs text-gray-800 uppercase bg-gray-200">
+                </form>
+                <div className="relative overflow-x-auto rounded-lg flex-grow">
+                  <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                    <thead className="text-xs text-gray-800 uppercase bg-gray-200">
                       <tr>
-                        <th scope="col" class="px-6 py-3">
+                        <th scope="col" className="px-6 py-3">
                           Producto
                         </th>
-                        <th scope="col" class="px-6 py-3">
+                        <th scope="col" className="px-6 py-3">
                           Cantidad
                         </th>
-                        <th scope="col" class="px-6 py-3">
+                        <th scope="col" className="px-6 py-3">
                           Action
                         </th>
                       </tr>
