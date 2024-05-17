@@ -12,7 +12,10 @@ export const Schema = Yup.object().shape({
   productosPedido: Yup.array()
     .of(
       Yup.object().shape({
-        codPro: Yup.string().required("field required"),
+        producto: Yup.object().shape({
+          label: Yup.string(),
+          value: Yup.string().required(),
+        }).required("field required"),
         cantidad: Yup.number().min(1, "min 0"),
       }),
     )

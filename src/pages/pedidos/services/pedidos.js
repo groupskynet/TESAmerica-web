@@ -16,6 +16,16 @@ export class PedidosServices {
       (resp) => resp.json(),
     );
   };
+
+  pedido = async (data) => {
+      return await fetch("http://localhost:5000/api/pedido/agregar",{
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }).then(resp => resp.json());
+  };
 }
 
 export const service = new PedidosServices();
